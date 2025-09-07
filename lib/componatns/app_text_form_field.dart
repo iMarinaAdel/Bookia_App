@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
     super.key,
-    required this.labelText,
+    this.labelText,
     this.suffixIcon,
     this.hintText,
   });
-  final String labelText;
+  final String? labelText;
   final Widget? suffixIcon;
   final String? hintText;
   @override
@@ -16,7 +16,7 @@ class AppTextFormField extends StatelessWidget {
     return TextFormField(
       cursorColor: AppColor.primaryColor,
       decoration: InputDecoration(
-        label: Text(labelText),
+        labelText: labelText,
         suffixIcon: suffixIcon,
         hintText: hintText,
       ),

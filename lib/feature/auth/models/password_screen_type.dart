@@ -1,0 +1,1 @@
+enum PasswordScreenType { createNewPassword, forgetPassword }

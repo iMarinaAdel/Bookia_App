@@ -17,25 +17,25 @@ class AppTheme {
     ),
     appBarTheme: AppBarTheme(backgroundColor: AppColor.whiteColor),
     inputDecorationTheme: InputDecorationTheme(
-      hintStyle: TextStyles.getText18(color: AppColor.grayColor),
+      hintStyle: TextStyles.getText14(color: AppColor.grayColor),
       labelStyle: TextStyle(color: AppColor.grayColor),
       floatingLabelStyle: TextStyle(color: AppColor.primaryColor),
       filled: true,
       fillColor: AppColor.textFormColor,
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: Colors.red),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: AppColor.primaryColor),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: AppColor.primaryColor),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: AppColor.borderColor),
       ),
     ),

@@ -9,4 +9,6 @@ class AppAssets {
   static const String categorySvg = "assets/icons/Category.svg";
   static const String cameraSvg = "assets/icons/camera.svg";
   static const String bookmarkSvg = "assets/icons/Bookmark.svg";
+
+  static const String donej = "assets/image/done.json";
 }

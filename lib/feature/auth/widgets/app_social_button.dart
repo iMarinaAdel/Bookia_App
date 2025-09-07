@@ -9,7 +9,7 @@ class AppSocialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8),
-      width: 70,
+      width: 90,
       height: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
