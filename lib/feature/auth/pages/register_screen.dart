@@ -1,4 +1,4 @@
-import 'package:bookia/componatns/app_main_bottom.dart';
+import 'package:bookia/components/app_main_bottom.dart';
 import 'package:bookia/feature/auth/models/auth_type.dart';
 import 'package:bookia/feature/auth/widgets/arrow_back.dart';
 import 'package:bookia/feature/auth/widgets/auth_form.dart';

@@ -1,5 +1,5 @@
-import 'package:bookia/componatns/app_text_form_field.dart';
-import 'package:bookia/const/app_assets.dart';
+import 'package:bookia/components/app_text_form_field.dart';
+import 'package:bookia/constants/app_assets.dart';
 import 'package:bookia/core/services/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
