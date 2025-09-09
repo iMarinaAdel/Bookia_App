@@ -1,9 +1,16 @@
 import 'package:bookia/core/utils/app_theme.dart';
-import 'package:bookia/feature/splash/splash_screen.dart';
+import 'package:bookia/routes/routes.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const BookiaApp());
+  runApp(
+    DevicePreview(
+      enabled: kDebugMode,
+      builder: (context) => const BookiaApp(),
+    ),
+  );
 }
 
 class BookiaApp extends StatelessWidget {
@@ -11,9 +18,9 @@ class BookiaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      routerConfig: Routes.router,
       theme: AppTheme.lightTheme,
     );
   }

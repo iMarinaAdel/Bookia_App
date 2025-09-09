@@ -1,6 +1,6 @@
-import 'package:bookia/feature/auth/models/password_screen_type.dart';
-import 'package:bookia/feature/auth/widgets/arrow_back.dart';
-import 'package:bookia/feature/auth/widgets/password_form_screen.dart';
+import 'package:bookia/feature/auth/presentation/models/password_screen_type.dart';
+import 'package:bookia/feature/auth/presentation/widgets/arrow_back.dart';
+import 'package:bookia/feature/auth/presentation/widgets/password_form_screen.dart';
 import 'package:flutter/material.dart';
 
 class CreatePasswordScreen extends StatelessWidget {

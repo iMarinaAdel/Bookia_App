@@ -1,10 +1,8 @@
 import 'package:bookia/core/services/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
-import 'package:bookia/feature/auth/models/auth_type.dart';
-import 'package:bookia/feature/auth/pages/forget_password_screen.dart';
-import 'package:bookia/feature/auth/pages/login_screen.dart';
-import 'package:bookia/feature/auth/pages/register_screen.dart';
+import 'package:bookia/feature/auth/presentation/models/auth_type.dart';
+import 'package:bookia/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class AuthSwitcher extends StatelessWidget {
@@ -16,36 +14,34 @@ class AuthSwitcher extends StatelessWidget {
   Widget build(BuildContext context) {
     String message;
     String actionText;
-    Widget screen;
+    String screen;
     VoidCallback onTap;
     switch (type) {
       case AuthType.login:
         message = "Don’t have an account?";
         actionText = " Register Now";
-        screen = RegisterScreen();
-        onTap = () => AppNavigation.pushReplacementTo(context, screen);
+        screen = Routes.register;
+        onTap = () => pushReplacementTo(context, screen);
         break;
       case AuthType.register:
         message = "Already have an account?";
         actionText = " Login Now";
-        screen = LoginScreen();
-        onTap = () => AppNavigation.pushReplacementTo(context, screen);
+        screen = Routes.login;
+        onTap = () => pushReplacementTo(context, screen);
 
         break;
       case AuthType.forgetPassword:
         message = "Remember Password?";
         actionText = " Login";
-        screen = LoginScreen();
-        onTap = () => AppNavigation.pushReplacementTo(context, screen);
+        screen = Routes.login;
+        onTap = () => pushReplacementTo(context, screen);
         break;
       case AuthType.oTPVerification:
         message = "Didn’t received code?";
         actionText = " Resend";
-        screen = ForgetPasswordScreen();
+        screen = Routes.forgetPassword;
         onTap = onTap = onTapResent ?? () {};
         break;
-      
-
     }
     return Align(
       alignment: AlignmentGeometry.center,

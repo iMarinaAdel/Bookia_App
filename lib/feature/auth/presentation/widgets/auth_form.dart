@@ -1,13 +1,11 @@
 import 'package:bookia/components/app_text_form_field.dart';
-import 'package:bookia/constants/app_assets.dart';
 import 'package:bookia/core/services/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
-import 'package:bookia/feature/auth/models/auth_type.dart';
-import 'package:bookia/feature/auth/pages/forget_password_screen.dart';
+import 'package:bookia/feature/auth/presentation/models/auth_type.dart';
+import 'package:bookia/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class AuthForm extends StatelessWidget {
   const AuthForm({super.key, required this.type});
@@ -30,28 +28,27 @@ class AuthForm extends StatelessWidget {
           AppTextFormField(
             labelText: 'Username',
             hintText: "Enter Your Username",
+            isPassword: false,
           ),
         },
         Gap(20),
-        AppTextFormField(labelText: 'Email', hintText: "Enter Your Email"),
+        AppTextFormField(
+          labelText: 'Email',
+          hintText: "Enter Your Email",
+          isPassword: false,
+        ),
         Gap(15),
         AppTextFormField(
           labelText: 'Password',
           hintText: "Enter Your Password",
-          suffixIcon: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: SvgPicture.asset(AppAssets.eyeSvg, width: 25, height: 25),
-          ),
+          isPassword: true,
         ),
         if (!isLogin) ...{
           Gap(15),
           AppTextFormField(
             labelText: 'Confirm password',
             hintText: "Enter Confirm password",
-            suffixIcon: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SvgPicture.asset(AppAssets.eyeSvg, width: 25, height: 25),
-            ),
+            isPassword: true,
           ),
         },
 
@@ -63,7 +60,7 @@ class AuthForm extends StatelessWidget {
                 foregroundColor: AppColor.primaryColor,
               ),
               onPressed: () {
-                AppNavigation.pushTo(context, ForgetPasswordScreen());
+                pushTo(context, Routes.forgetPassword);
               },
               child: Text(
                 textAlign: TextAlign.end,

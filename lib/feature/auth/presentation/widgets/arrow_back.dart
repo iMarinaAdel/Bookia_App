@@ -11,7 +11,7 @@ class ArrowBack extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppNavigation.popTo(context);
+        popTo(context);
       },
       child: Container(
         width: 50,
