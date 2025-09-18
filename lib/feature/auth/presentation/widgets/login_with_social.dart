@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 
 class LoginWithSocial extends StatelessWidget {
-  const LoginWithSocial({
-    super.key,
-  });
+  const LoginWithSocial({super.key});
 
   @override
   Widget build(BuildContext context) {

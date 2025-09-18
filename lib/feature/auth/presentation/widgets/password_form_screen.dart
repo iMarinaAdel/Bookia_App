@@ -1,6 +1,6 @@
 import 'package:bookia/components/app_main_bottom.dart';
 import 'package:bookia/components/app_text_form_field.dart';
-import 'package:bookia/core/services/app_navigation.dart';
+import 'package:bookia/routes/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/auth/presentation/models/auth_type.dart';
@@ -33,7 +33,10 @@ class PasswordFormScreen extends StatelessWidget {
           ),
           if (isForgetPassword) ...{
             Gap(30),
-            Text("Email", style: TextStyles.getText16(color: AppColor.darkColor)),
+            Text(
+              "Email",
+              style: TextStyles.getText16(color: AppColor.darkColor),
+            ),
             Gap(10),
             AppTextFormField(hintText: "Enter Your Email", isPassword: false),
           },

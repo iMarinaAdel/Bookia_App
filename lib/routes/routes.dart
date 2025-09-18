@@ -1,12 +1,14 @@
+import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/pages/forget_password/create_password_screen.dart';
 import 'package:bookia/feature/auth/presentation/pages/forget_password/forget_password_screen.dart';
-import 'package:bookia/feature/auth/presentation/pages/login/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/pages/forget_password/oTP_verification.dart';
 import 'package:bookia/feature/auth/presentation/pages/forget_password/password_changed.dart';
+import 'package:bookia/feature/auth/presentation/pages/login/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/pages/register/register_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class Routes {
@@ -18,6 +20,8 @@ class Routes {
   static final String forgetPassword = '/forgetPassword';
   static final String otpVerification = '/otpVerification';
   static final String passwordChanged = '/passwordChanged';
+    static final String main = '/main';
+
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -33,13 +37,17 @@ class Routes {
       ),
       GoRoute(
         path: login,
-        builder: (BuildContext context, GoRouterState state) =>
-            const LoginScreen(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) => AuthCubit(),
+          child: const LoginScreen(),
+        ),
       ),
       GoRoute(
         path: register,
-        builder: (BuildContext context, GoRouterState state) =>
-            const RegisterScreen(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) => AuthCubit(),
+          child: const RegisterScreen(),
+        ),
       ),
       GoRoute(
         path: forgetPassword,
@@ -58,6 +66,11 @@ class Routes {
       ),
       GoRoute(
         path: passwordChanged,
+        builder: (BuildContext context, GoRouterState state) =>
+            const PasswordChanged(),
+      ),
+      GoRoute(
+        path: main,
         builder: (BuildContext context, GoRouterState state) =>
             const PasswordChanged(),
       ),

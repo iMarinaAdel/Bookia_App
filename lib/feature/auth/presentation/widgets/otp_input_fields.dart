@@ -1,11 +1,10 @@
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart' show PinCodeTextField, PinTheme, PinCodeFieldShape;
+import 'package:pin_code_fields/pin_code_fields.dart'
+    show PinCodeTextField, PinTheme, PinCodeFieldShape;
 
 class OtpInputFields extends StatelessWidget {
-  const OtpInputFields({
-    super.key,
-  });
+  const OtpInputFields({super.key});
 
   @override
   Widget build(BuildContext context) {

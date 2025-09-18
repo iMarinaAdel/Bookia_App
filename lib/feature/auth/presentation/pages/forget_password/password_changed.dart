@@ -1,6 +1,6 @@
 import 'package:bookia/components/app_main_bottom.dart';
 import 'package:bookia/constants/app_assets.dart';
-import 'package:bookia/core/services/app_navigation.dart';
+import 'package:bookia/routes/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/routes/routes.dart';

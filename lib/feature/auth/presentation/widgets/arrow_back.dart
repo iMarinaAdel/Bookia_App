@@ -1,11 +1,9 @@
-import 'package:bookia/core/services/app_navigation.dart';
+import 'package:bookia/routes/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
 class ArrowBack extends StatelessWidget {
-  const ArrowBack({
-    super.key,
-  });
+  const ArrowBack({super.key});
 
   @override
   Widget build(BuildContext context) {

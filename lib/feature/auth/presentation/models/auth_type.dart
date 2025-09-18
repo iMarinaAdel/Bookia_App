@@ -1,6 +1,1 @@
-enum AuthType {
-  login,
-  register,
-  forgetPassword,
-  oTPVerification,
-}
+enum AuthType { login, register, forgetPassword, oTPVerification }

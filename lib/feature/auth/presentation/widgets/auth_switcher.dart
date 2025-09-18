@@ -1,4 +1,4 @@
-import 'package:bookia/core/services/app_navigation.dart';
+import 'package:bookia/routes/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/auth/presentation/models/auth_type.dart';
