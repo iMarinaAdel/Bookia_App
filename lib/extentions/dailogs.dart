@@ -1,4 +1,6 @@
 import 'package:bookia/constants/app_assets.dart';
+import 'package:bookia/core/utils/app_color.dart';
+import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/routes/app_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
@@ -32,7 +34,6 @@ class Dialogs {
 
   static showSuccessDialog(BuildContext context, String message) {
     showDialog(
-      barrierDismissible: false,
       context: context,
       builder: (context) {
         return Dialog(
@@ -44,20 +45,12 @@ class Dialogs {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Lottie.asset(AppAssets.successJ, width: 120, height: 120),
+                Lottie.asset(AppAssets.successJ, width: 30, height: 30),
                 const Gap(15),
                 Text(
                   message,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyles.getText16(color: AppColor.darkColor),
                   textAlign: TextAlign.center,
-                ),
-                const Gap(10),
-                ElevatedButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text("OK"),
                 ),
               ],
             ),
@@ -69,7 +62,6 @@ class Dialogs {
 
   static showErrorDialog(BuildContext context, String message) {
     showDialog(
-      barrierDismissible: false,
       context: context,
       builder: (context) {
         return AlertDialog(

@@ -9,7 +9,7 @@ class AppAssets {
   static const String categorySvg = "assets/icons/Category.svg";
   static const String cameraSvg = "assets/icons/camera.svg";
   static const String bookmarkSvg = "assets/icons/Bookmark.svg";
-  static const String successJ = "  assets/icons/Success.json";
+  static const String successJ = "assets/image/Success.json";
 
   static const String donej = "assets/image/done.json";
 }

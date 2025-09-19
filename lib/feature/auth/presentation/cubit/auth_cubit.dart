@@ -6,12 +6,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
   AuthCubit() : super(AuthInitial());
+
   var formKey = GlobalKey<FormState>();
   var userNameControllar = TextEditingController();
   var emailControllar = TextEditingController();
   var passwordControllar = TextEditingController();
   var passwordConfirmationControllar = TextEditingController();
+  var verifyCodeControllar = TextEditingController();
 
+  // Register
   rigester() async {
     var params = AuthParams(
       name: userNameControllar.text,
@@ -20,15 +23,17 @@ class AuthCubit extends Cubit<AuthStates> {
       passwordConfirmation: passwordConfirmationControllar.text,
     );
     emit(AuthLoading());
-    // call api
+
     var response = await AuthRepo.rigester(params);
+
     if (response != null) {
-      return emit(AuthSucces());
+      emit(AuthSuccess());
     } else {
-      emit(AuthError("Registration failed"));
+      emit(AuthError("Registration failed, please try again"));
     }
   }
 
+  // Login
   login() async {
     var params = AuthParams(
       email: emailControllar.text,
@@ -39,13 +44,70 @@ class AuthCubit extends Cubit<AuthStates> {
     var response = await AuthRepo.login(params);
 
     if (response != null) {
-      if (response.status == 200) {
-        emit(AuthSucces());
-      } else {
-        emit(AuthError(response.message ?? "Login failed"));
-      }
+      emit(AuthSuccess());
     } else {
       emit(AuthError("Login failed, please try again"));
+    }
+  }
+
+  // Forget Password
+  forgetPassword() async {
+    emit(AuthLoading());
+    var params = AuthParams(email: emailControllar.text);
+
+    var response = await AuthRepo.forgetPassword(params);
+
+    if (response != null) {
+      emit(AuthSuccess());
+    } else {
+      emit(AuthError("Failed, please try again"));
+    }
+  }
+
+  checkForgetCode() async {
+    emit(AuthLoading());
+    var params = AuthParams(
+      email: emailControllar.text,
+      verifyCode: verifyCodeControllar.text,
+    );
+
+    var response = await AuthRepo.oTpVerification(params);
+
+    if (response != null) {
+      emit(AuthSuccess());
+    } else {
+      emit(AuthError("Failed, please try again"));
+    }
+  }
+
+  resetPassword() async {
+    emit(AuthLoading());
+    var params = AuthParams(
+      email: emailControllar.text,
+      verifyCode: verifyCodeControllar.text,
+      password: passwordControllar.text,
+      passwordConfirmation: passwordConfirmationControllar.text,
+    );
+
+    var response = await AuthRepo.resetPassword(params);
+
+    if (response != null) {
+      emit(AuthResetPasswordSuccess());
+    } else {
+      emit(AuthError("Failed, please try again"));
+    }
+  }
+
+  resendVerifyCode() async {
+    emit(AuthLoading());
+    var params = AuthParams(email: emailControllar.text);
+
+    var response = await AuthRepo.resendVerifyCode(params);
+
+    if (response != null) {
+      emit(AuthResendCodeSuccess());
+    } else {
+      emit(AuthError("Failed, please try again"));
     }
   }
 }

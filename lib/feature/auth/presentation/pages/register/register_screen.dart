@@ -25,7 +25,7 @@ class RegisterScreen extends StatelessWidget {
         listener: (BuildContext context, state) {
           if (state is AuthLoading) {
             Dialogs.showLoadingDialog(context, "Please wait...");
-          } else if (state is AuthSucces) {
+          } else if (state is AuthSuccess) {
             Dialogs.hideLoadingDialog(context);
             Dialogs.showSuccessDialog(context, "Register Successfully!");
             Future.delayed(const Duration(seconds: 2), () {
@@ -33,7 +33,7 @@ class RegisterScreen extends StatelessWidget {
             });
           } else if (state is AuthError) {
             Dialogs.hideLoadingDialog(context);
-            Dialogs.showErrorDialog(context, state.erroe);
+            Dialogs.showErrorDialog(context, state.error);
           }
         },
         child: Padding(

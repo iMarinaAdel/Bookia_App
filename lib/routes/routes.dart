@@ -5,6 +5,7 @@ import 'package:bookia/feature/auth/presentation/pages/forget_password/oTP_verif
 import 'package:bookia/feature/auth/presentation/pages/forget_password/password_changed.dart';
 import 'package:bookia/feature/auth/presentation/pages/login/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/pages/register/register_screen.dart';
+import 'package:bookia/feature/main/presentation/pages/main_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,7 @@ class Routes {
   static final String forgetPassword = '/forgetPassword';
   static final String otpVerification = '/otpVerification';
   static final String passwordChanged = '/passwordChanged';
-    static final String main = '/main';
-
+  static final String main = '/main';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -51,18 +51,24 @@ class Routes {
       ),
       GoRoute(
         path: forgetPassword,
-        builder: (BuildContext context, GoRouterState state) =>
-            const ForgetPasswordScreen(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) => AuthCubit(),
+          child: const ForgetPasswordScreen(),
+        ),
       ),
       GoRoute(
         path: createPassword,
-        builder: (BuildContext context, GoRouterState state) =>
-            const CreatePasswordScreen(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) => AuthCubit(),
+          child: const CreatePasswordScreen(),
+        ),
       ),
       GoRoute(
         path: otpVerification,
-        builder: (BuildContext context, GoRouterState state) =>
-            const OtpVerification(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) => AuthCubit(),
+          child: const OtpVerificationScreen(),
+        ),
       ),
       GoRoute(
         path: passwordChanged,
@@ -72,7 +78,7 @@ class Routes {
       GoRoute(
         path: main,
         builder: (BuildContext context, GoRouterState state) =>
-            const PasswordChanged(),
+            const MainScreen(),
       ),
     ],
   );
