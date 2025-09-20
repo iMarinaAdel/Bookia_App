@@ -16,7 +16,11 @@ class AppTheme {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+       type: BottomNavigationBarType.fixed,
       backgroundColor: AppColor.whiteColor,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      selectedItemColor: AppColor.primaryColor,
     ),
     appBarTheme: AppBarTheme(backgroundColor: AppColor.whiteColor),
     inputDecorationTheme: InputDecorationTheme(
