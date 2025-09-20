@@ -107,7 +107,7 @@ class AuthRepo {
     try {
       var res = await DioProvider.get(
         endPoint: ApiEndpoints.resendverifyCode,
-        params: params.toJson(),
+        queryParameters: params.toJson(),
       );
       if (res.statusCode == 200) {
         // success

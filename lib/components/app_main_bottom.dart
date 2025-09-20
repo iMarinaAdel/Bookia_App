@@ -11,7 +11,7 @@ class AppMainBottom extends StatelessWidget {
     this.borderColor,
     this.bottomColor,
     this.bottomWidth,
-    this.bottomHight,
+    this.bottomHight, this.radias,
   });
   final VoidCallback onPressed;
   final Color? textColor;
@@ -20,6 +20,7 @@ class AppMainBottom extends StatelessWidget {
   final Color? bottomColor;
   final double? bottomWidth;
   final double? bottomHight;
+  final double? radias;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class AppMainBottom extends StatelessWidget {
           backgroundColor: bottomColor ?? AppColor.primaryColor,
           side: BorderSide(color: borderColor ?? Colors.transparent),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(radias ?? 15),
           ),
         ),
         onPressed: onPressed,

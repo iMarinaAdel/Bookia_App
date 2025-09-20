@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 pushTo(BuildContext context, String route, [Object? extra]) {
   // Navigator.push(context, MaterialPageRoute(builder: (context) => newPage));
   return context.push(route, extra: extra);

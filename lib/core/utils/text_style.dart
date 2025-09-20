@@ -55,6 +55,19 @@ class TextStyles {
     );
   }
 
+  static TextStyle getText20({
+    Color? color,
+    double? fontSize,
+    FontWeight? fontWeight,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.dMSerifDisplay,
+      color: color ?? AppColor.whiteColor,
+      fontSize: fontSize ?? 20,
+      fontWeight: fontWeight ?? FontWeight.w500,
+    );
+  }
+
   static TextStyle getText18({
     Color? color,
     double? fontSize,

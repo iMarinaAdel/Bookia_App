@@ -16,13 +16,13 @@ class AppTheme {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-       type: BottomNavigationBarType.fixed,
+      type: BottomNavigationBarType.fixed,
       backgroundColor: AppColor.whiteColor,
       showSelectedLabels: false,
       showUnselectedLabels: false,
       selectedItemColor: AppColor.primaryColor,
     ),
-    appBarTheme: AppBarTheme(backgroundColor: AppColor.whiteColor),
+    appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyles.getText14(color: AppColor.grayColor),
       labelStyle: TextStyle(color: AppColor.grayColor),

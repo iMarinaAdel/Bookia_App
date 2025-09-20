@@ -12,13 +12,13 @@ class DioProvider {
   static Future<Response> post({
     required String endPoint,
     Object? data,
-    Map<String, dynamic>? params,
+    Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? header,
   }) async {
     return await dio.post(
       endPoint,
       data: data,
-      queryParameters: params,
+      queryParameters: queryParameters,
       options: Options(headers: header),
     );
   }
@@ -26,13 +26,13 @@ class DioProvider {
   static Future<Response> get({
     required String endPoint,
     Object? data,
-    Map<String, dynamic>? params,
+    Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? header,
   }) async {
     return await dio.get(
       endPoint,
       data: data,
-      queryParameters: params,
+      queryParameters: queryParameters,
       options: Options(headers: header),
     );
   }
@@ -40,13 +40,13 @@ class DioProvider {
   static Future<Response> delete({
     required String endPoint,
     Object? data,
-    Map<String, dynamic>? params,
+    Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? header,
   }) async {
     return await dio.delete(
       endPoint,
       data: data,
-      queryParameters: params,
+      queryParameters: queryParameters,
       options: Options(headers: header),
     );
   }
@@ -54,13 +54,13 @@ class DioProvider {
   static Future<Response> put({
     required String endPoint,
     Object? data,
-    Map<String, dynamic>? params,
+    Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? header,
   }) async {
     return await dio.put(
       endPoint,
       data: data,
-      queryParameters: params,
+      queryParameters: queryParameters,
       options: Options(headers: header),
     );
   }
