@@ -19,16 +19,12 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: HomeScreen(),
       bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: AppColor.primaryColor,
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
             currentIndex = index;
           });
         },
-        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(AppAssets.home),

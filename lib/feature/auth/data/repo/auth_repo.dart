@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bookia/core/services/api/api_endpoints.dart';
 import 'package:bookia/core/services/api/dio_provider.dart';
+import 'package:bookia/core/services/local/local_helper.dart';
 import 'package:bookia/feature/auth/data/models/request/auth_params.dart';
 import 'package:bookia/feature/auth/data/models/response/auth_response/auth_response.dart';
 
@@ -15,7 +16,10 @@ class AuthRepo {
       if (res.statusCode == 201) {
         // success
         // data as json
-        return AuthResponse.fromJson(res.data);
+
+        var data = AuthResponse.fromJson(res.data);
+        await LocalHelper.setUserData(data.data);
+        return data;
       } else {
         return null;
       }
@@ -33,7 +37,9 @@ class AuthRepo {
       );
       if (res.statusCode == 200) {
         // success
-        return AuthResponse.fromJson(res.data);
+        var data = AuthResponse.fromJson(res.data);
+        await LocalHelper.setUserData(data.data);
+        return data;
       } else {
         return null;
       }
