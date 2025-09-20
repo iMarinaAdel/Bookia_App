@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
             } else if (state is AuthSuccess) {
               Dialogs.hideLoadingDialog(context);
               Dialogs.showSuccessDialog(context, "Login Successfully!");
-              Future.delayed(const Duration(minutes: 30), () {
+              Future.delayed(const Duration(seconds: 2), () {
                 pushAndRemoveUntilTo(context, Routes.main);
               });
             } else if (state is AuthError) {

@@ -45,7 +45,7 @@ class Dialogs {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Lottie.asset(AppAssets.successJ, width: 30, height: 30),
+                Lottie.asset(AppAssets.successJ, width: 60, height: 60),
                 const Gap(15),
                 Text(
                   message,

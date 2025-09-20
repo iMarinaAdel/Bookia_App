@@ -15,6 +15,9 @@ class AppTheme {
         textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColor.whiteColor,
+    ),
     appBarTheme: AppBarTheme(backgroundColor: AppColor.whiteColor),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyles.getText14(color: AppColor.grayColor),
