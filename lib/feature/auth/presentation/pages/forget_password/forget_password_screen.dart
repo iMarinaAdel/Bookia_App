@@ -1,4 +1,4 @@
-import 'package:bookia/feature/auth/presentation/models/password_screen_type.dart';
+import 'package:bookia/feature/auth/presentation/auth_types/password_screen_type.dart';
 import 'package:bookia/feature/auth/presentation/widgets/arrow_back.dart';
 import 'package:bookia/feature/auth/presentation/widgets/password_form_screen.dart';
 import 'package:flutter/material.dart';

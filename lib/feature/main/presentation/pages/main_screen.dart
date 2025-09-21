@@ -27,9 +27,9 @@ class _MainScreenState extends State<MainScreen> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppAssets.home),
+            icon: SvgPicture.asset(AppAssets.homeSvg),
             activeIcon: SvgPicture.asset(
-              AppAssets.home,
+              AppAssets.homeSvg,
               colorFilter: ColorFilter.mode(
                 AppColor.primaryColor,
                 BlendMode.srcIn,

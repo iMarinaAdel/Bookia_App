@@ -6,6 +6,7 @@ import 'package:bookia/feature/auth/presentation/pages/forget_password/password_
 import 'package:bookia/feature/auth/presentation/pages/login/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/pages/register/register_screen.dart';
 import 'package:bookia/feature/main/presentation/pages/main_screen.dart';
+import 'package:bookia/feature/search/presentation/pages/search_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class Routes {
   static final String otpVerification = '/otpVerification';
   static final String passwordChanged = '/passwordChanged';
   static final String main = '/main';
+  static final String search = '/search';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -79,6 +81,11 @@ class Routes {
         path: main,
         builder: (BuildContext context, GoRouterState state) =>
             const MainScreen(),
+      ),
+      GoRoute(
+        path: search,
+        builder: (BuildContext context, GoRouterState state) =>
+            const SearchScreen(),
       ),
     ],
   );

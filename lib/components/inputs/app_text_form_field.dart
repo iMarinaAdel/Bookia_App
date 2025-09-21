@@ -12,6 +12,7 @@ class AppTextFormField extends StatefulWidget {
     required this.isPassword,
     this.controller,
     this.validator,
+    this.autofocus,
   });
   final String? labelText;
   final Widget? suffixIcon;
@@ -19,6 +20,7 @@ class AppTextFormField extends StatefulWidget {
   final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final bool? autofocus;
 
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
@@ -30,6 +32,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: widget.autofocus ?? false,
       validator: widget.validator,
       controller: widget.controller,
       obscureText: obscureText && widget.isPassword,

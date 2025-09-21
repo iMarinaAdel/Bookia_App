@@ -11,7 +11,8 @@ class AppMainBottom extends StatelessWidget {
     this.borderColor,
     this.bottomColor,
     this.bottomWidth,
-    this.bottomHight, this.radias,
+    this.bottomHight,
+    this.radias,
   });
   final VoidCallback onPressed;
   final Color? textColor;

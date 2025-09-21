@@ -6,6 +6,8 @@ import 'package:bookia/feature/home/presentation/widgets/all_product_list.dart';
 import 'package:bookia/feature/home/presentation/widgets/best_sellers_list.dart';
 import 'package:bookia/feature/home/presentation/widgets/home_slider.dart';
 import 'package:bookia/feature/home/presentation/widgets/new_arrivals_list.dart';
+import 'package:bookia/routes/app_navigation.dart';
+import 'package:bookia/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
@@ -27,8 +29,10 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12),
               child: GestureDetector(
-                child: SvgPicture.asset(AppAssets.search),
-                onTap: () {},
+                child: SvgPicture.asset(AppAssets.searchSvg),
+                onTap: () {
+                  pushTo(context, Routes.search);
+                },
               ),
             ),
           ],
@@ -58,7 +62,7 @@ class HomeScreen extends StatelessWidget {
             if (state is HomeLoadingState) {
               Dialogs.showLoadingDialog(context);
             } else if (state is HomeLoadedState) {
-              Dialogs.hideLoadingDialog(context);
+              // Dialogs.hideLoadingDialog(context);
             } else if (state is HomeErrorState) {
               Dialogs.showErrorDialog(context, "حدث خطأ، حاول تاني");
             }
