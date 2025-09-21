@@ -33,11 +33,14 @@ class BookCardWidget extends StatelessWidget {
               ),
             ),
             Gap(5),
-            Text(
-              product.name ?? "",
-              style: TextStyles.getText20(color: AppColor.darkColor),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            SizedBox(
+              height: 45,
+              child: Text(
+                product.name ?? "",
+                style: TextStyles.getText18(color: AppColor.darkColor),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             Gap(5),
             Row(

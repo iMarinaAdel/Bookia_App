@@ -29,7 +29,7 @@ class NewArrivalsList extends StatelessWidget {
             separatorBuilder: (context, index) {
               return Gap(10);
             },
-            itemCount: 5,
+            itemCount: products.length,
           ),
         ),
       ],

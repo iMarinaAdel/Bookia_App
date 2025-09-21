@@ -22,7 +22,7 @@ final List<Product> products;
           height: 280,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: products.length,
             itemBuilder: (context, index) {
               return BookCardWidget(product: products[index],);
             },
