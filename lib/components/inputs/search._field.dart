@@ -18,19 +18,22 @@ class SearchBarWidget extends StatelessWidget {
         height: 52,
         width: double.infinity,
         child: TextFormField(
+          onFieldSubmitted: (value) {
+            cubit.getSearch();
+          },
+          textInputAction: TextInputAction.search,
           controller: cubit.searchNameControllar,
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: "Search",
             hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 16),
-            prefixIcon: SvgPicture.asset(
-              AppAssets.searchSvg,
-              height: 20,
-              width: 20,
+            prefixIcon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(AppAssets.searchSvg),
             ),
             prefixIconConstraints: const BoxConstraints(
-              minWidth: 40,
-              minHeight: 40,
+              minWidth: 20,
+              minHeight: 20,
             ),
             filled: true,
             fillColor: const Color(0xffF2F3F2),

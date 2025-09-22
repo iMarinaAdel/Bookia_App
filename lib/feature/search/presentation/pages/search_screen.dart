@@ -1,4 +1,5 @@
 import 'package:bookia/components/inputs/search._field.dart';
+import 'package:bookia/extentions/dailogs.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:bookia/feature/home/presentation/widgets/book_card_widget.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
@@ -20,10 +21,25 @@ class SearchScreen extends StatelessWidget {
               title: SearchBarWidget(),
               automaticallyImplyLeading: false,
             ),
-            body: BlocBuilder<SearchCubit, SearchStates>(
+            body: BlocConsumer<SearchCubit, SearchStates>(
+              listener: (context, state) {
+                if (state is SearchLoading) {
+                  Dialogs.showLoadingDialog(context);
+                } else {
+                  Dialogs.hideLoadingDialog(context);
+                }
+              },
               builder: (context, state) {
-                var cubit = context.read<SearchCubit>();
-                return ProductOfSearch(products: cubit.products);
+                var cubit = context.watch<SearchCubit>();
+                if (state is SearchSuccess) {
+                  return ProductOfSearch(products: cubit.products);
+                } else if (state is SearchEmpty) {
+                  return const Center(child: Text("لا يوجد نتائج للبحث"));
+                } else if (state is SearchError) {
+                  return const Center(child: Text("حدث خطأ، حاول مرة أخرى"));
+                } else {
+                  return const Center(child: Text("ابحث عن كتاب من هنا 🔍"));
+                }
               },
             ),
           );
@@ -39,23 +55,18 @@ class ProductOfSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisExtent: 280,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-            ),
-            itemBuilder: (context, index) {
-              return BookCardWidget(product: products[index]);
-            },
-            itemCount: products.length,
-          ),
-        ),
-      ],
+    return GridView.builder(
+      padding: const EdgeInsets.all(10),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisExtent: 280,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+      ),
+      itemBuilder: (context, index) {
+        return BookCardWidget(product: products[index]);
+      },
+      itemCount: products.length,
     );
   }
 }

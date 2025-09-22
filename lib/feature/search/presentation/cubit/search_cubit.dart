@@ -17,8 +17,15 @@ class SearchCubit extends Cubit<SearchStates> {
     emit(SearchLoading());
     var response = await SearchRepo.getSearch(params);
 
-    products = (response as BookListRespose).data?.products ?? [];
-    // success
-    emit(SearchSuccess());
+    if (response != null) {
+      products = (response as BookListRespose).data?.products ?? [];
+      if (products.isEmpty) {
+        emit(SearchEmpty());
+      } else {
+        emit(SearchSuccess());
+      }
+    } else {
+      emit(SearchError());
+    }
   }
 }
