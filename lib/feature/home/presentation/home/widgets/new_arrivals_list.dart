@@ -1,7 +1,7 @@
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
-import 'package:bookia/feature/home/presentation/widgets/book_card_widget.dart';
+import 'package:bookia/feature/home/presentation/home/widgets/book_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 
@@ -24,7 +24,7 @@ class NewArrivalsList extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return BookCardWidget(product: products[index]);
+              return BookCardWidget(products: products[index]);
             },
             separatorBuilder: (context, index) {
               return Gap(10);

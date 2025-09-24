@@ -1,7 +1,7 @@
 import 'package:bookia/components/inputs/search._field.dart';
 import 'package:bookia/extentions/dailogs.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
-import 'package:bookia/feature/home/presentation/widgets/book_card_widget.dart';
+import 'package:bookia/feature/home/presentation/home/widgets/book_card_widget.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_states.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +64,7 @@ class ProductOfSearch extends StatelessWidget {
         crossAxisSpacing: 10,
       ),
       itemBuilder: (context, index) {
-        return BookCardWidget(product: products[index]);
+        return BookCardWidget(products: products[index]);
       },
       itemCount: products.length,
     );

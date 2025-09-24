@@ -5,6 +5,8 @@ import 'package:bookia/feature/auth/presentation/pages/forget_password/oTP_verif
 import 'package:bookia/feature/auth/presentation/pages/forget_password/password_changed.dart';
 import 'package:bookia/feature/auth/presentation/pages/login/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/pages/register/register_screen.dart';
+import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
+import 'package:bookia/feature/home/presentation/details/pages/details_screen.dart';
 import 'package:bookia/feature/main/presentation/pages/main_screen.dart';
 import 'package:bookia/feature/search/presentation/pages/search_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
@@ -24,6 +26,7 @@ class Routes {
   static final String passwordChanged = '/passwordChanged';
   static final String main = '/main';
   static final String search = '/search';
+  static final String details = '/details';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -86,6 +89,13 @@ class Routes {
         path: search,
         builder: (BuildContext context, GoRouterState state) =>
             const SearchScreen(),
+      ),
+      GoRoute(
+        path: details,
+        builder: (BuildContext context, GoRouterState state) {
+          var data = state.extra as Product;
+          return DetailsScreen(products: data);
+        },
       ),
     ],
   );
