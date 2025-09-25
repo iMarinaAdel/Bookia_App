@@ -22,7 +22,7 @@ class LocalHelper {
     await prefs.setString(kuserData, userDataString);
   }
 
-  static Future<UserData?> getUserData() async {
+  static UserData? getUserData() {
     //3)  save to shared preferences
     var source = prefs.getString(kuserData);
     if (source == null) return null;

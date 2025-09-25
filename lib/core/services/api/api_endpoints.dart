@@ -16,4 +16,8 @@ class ApiEndpoints {
 
   // search
   static const String search = "/products-search?name=aqaaaq";
+  // wishlist
+  static const String wishlist = "/wishlist";
+  static const String addToWishlist = "/add-to-wishlist";
+  static const String removeFromWishlist = "/remove-from-wishlist";
 }

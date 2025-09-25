@@ -6,10 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 
 class DetailsBody extends StatelessWidget {
-  const DetailsBody({
-    super.key,
-    required this.products,
-  });
+  const DetailsBody({super.key, required this.products});
 
   final Product products;
 

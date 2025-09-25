@@ -12,6 +12,7 @@ class AppAssets {
   static const String successJ = "assets/image/Success.json";
   static const String searchSvg = "assets/icons/search.svg";
   static const String homeSvg = "assets/icons/Home.svg";
+  static const String closeSvg = "assets/icons/Shape.svg";
 
   static const String donej = "assets/image/done.json";
 }

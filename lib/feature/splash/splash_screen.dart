@@ -18,14 +18,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3), () {
-      LocalHelper.getUserData().then((value) {
-        if (value != null) {
-          pushAndRemoveUntilTo(context, Routes.main);
-        } else {
-          pushReplacementTo(context, Routes.welcome);
-        }
-      });
+    Future.delayed(const Duration(seconds: 3), () {
+      var userData = LocalHelper.getUserData();
+
+      if (userData != null) {
+        pushReplacementTo(context, Routes.main);
+      } else {
+        pushReplacementTo(context, Routes.welcome);
+      }
     });
     super.initState();
   }
