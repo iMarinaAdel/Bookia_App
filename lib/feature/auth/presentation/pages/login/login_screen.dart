@@ -1,10 +1,10 @@
-import 'package:bookia/components/bottoms/app_main_bottom.dart';
-import 'package:bookia/extentions/dailogs.dart';
+import 'package:bookia/core/components/bottoms/app_main_bottom.dart';
+import 'package:bookia/core/extentions/dailogs.dart';
+import 'package:bookia/feature/auth/presentation/auth_types/auth_type.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart'
     show AuthCubit;
 import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_states.dart';
-import 'package:bookia/feature/auth/presentation/auth_types/auth_type.dart';
 import 'package:bookia/feature/auth/presentation/widgets/arrow_back.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_form.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_switcher.dart';

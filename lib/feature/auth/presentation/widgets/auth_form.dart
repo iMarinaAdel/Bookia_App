@@ -1,4 +1,4 @@
-import 'package:bookia/components/inputs/app_text_form_field.dart';
+import 'package:bookia/core/components/inputs/app_text_form_field.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';

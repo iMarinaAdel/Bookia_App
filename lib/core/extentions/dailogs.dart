@@ -1,4 +1,4 @@
-import 'package:bookia/constants/app_assets.dart';
+import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/routes/app_navigation.dart';
@@ -21,7 +21,7 @@ class Dialogs {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const CircularProgressIndicator(),
+                const CircularProgressIndicator(color: AppColor.primaryColor),
                 const Gap(15),
                 if (message != null) Text(message),
               ],
@@ -75,6 +75,19 @@ class Dialogs {
           ),
         );
       },
+    );
+  }
+
+  static showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        duration: const Duration(seconds: 1),
+        content: Text(message),
+        backgroundColor: AppColor.primaryColor,
+      ),
     );
   }
 

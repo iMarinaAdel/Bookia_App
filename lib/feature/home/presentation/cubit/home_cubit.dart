@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:bookia/core/services/local/local_helper.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/book_list_respose.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:bookia/feature/home/data/models/response/slider_response/slider.dart';
 import 'package:bookia/feature/home/data/models/response/slider_response/slider_response.dart';
 import 'package:bookia/feature/home/data/repo/home_repo.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_states.dart';
+import 'package:bookia/feature/wishlist/data/repo/wishlist_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -34,7 +36,36 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeLoadedState());
     } on Exception catch (e) {
       log(e.toString());
-      emit(HomeErrorState());
+      emit(HomeErrorState(e.toString()));
+    }
+  }
+
+  addRemoveToWishlist(int productId) async {
+    emit(HomeLoadingState());
+
+    if (isWishlist(productId)) {
+      var data = await WishlistRepo.removeFromWishlist(productId: productId);
+      if (data != null) {
+        emit(AddRemoveToWishListSuccess(message: 'Removed from wishlist'));
+      } else {
+        emit(HomeErrorState("Something went wrong"));
+      }
+    } else {
+      var data = await WishlistRepo.addToWishList(productId: productId);
+      if (data != null) {
+        emit(AddRemoveToWishListSuccess(message: 'Added to wishlist'));
+      } else {
+        emit(HomeErrorState("Something went wrong"));
+      }
+    }
+  }
+
+  bool isWishlist(int productId) {
+    var wishlist = LocalHelper.getWishlist();
+    if (wishlist != null) {
+      return wishlist.any((element) => element.id == productId);
+    } else {
+      return false;
     }
   }
 }

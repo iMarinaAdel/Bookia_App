@@ -1,12 +1,12 @@
-import 'package:bookia/components/bottoms/app_main_bottom.dart';
-import 'package:bookia/components/inputs/app_text_form_field.dart';
+import 'package:bookia/core/components/bottoms/app_main_bottom.dart';
+import 'package:bookia/core/components/inputs/app_text_form_field.dart';
+import 'package:bookia/core/extentions/dailogs.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
-import 'package:bookia/extentions/dailogs.dart';
-import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
-import 'package:bookia/feature/auth/presentation/cubit/auth_states.dart';
 import 'package:bookia/feature/auth/presentation/auth_types/auth_type.dart';
 import 'package:bookia/feature/auth/presentation/auth_types/password_screen_type.dart';
+import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
+import 'package:bookia/feature/auth/presentation/cubit/auth_states.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_switcher.dart';
 import 'package:bookia/routes/app_navigation.dart';
 import 'package:bookia/routes/routes.dart';

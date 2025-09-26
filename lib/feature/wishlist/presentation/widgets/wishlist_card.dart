@@ -1,5 +1,5 @@
-import 'package:bookia/components/bottoms/app_main_bottom.dart';
-import 'package:bookia/constants/app_assets.dart';
+import 'package:bookia/core/components/bottoms/app_main_bottom.dart';
+import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
@@ -9,8 +9,9 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WishlistCard extends StatelessWidget {
-  const WishlistCard({super.key, required this.product});
+  const WishlistCard({super.key, required this.product, this.onRemove});
   final Product product;
+  final VoidCallback? onRemove;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,20 +32,27 @@ class WishlistCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      product.name ?? "",
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyles.getText20(color: AppColor.darkColor),
+                    Expanded(
+                      child: Text(
+                        product.name ?? "",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyles.getText16(color: AppColor.darkColor),
+                      ),
                     ),
-                    SvgPicture.asset(AppAssets.closeSvg),
+                    Gap(5),
+                    GestureDetector(
+                      onTap: onRemove,
+                      child: SvgPicture.asset(AppAssets.closeSvg),
+                    ),
                   ],
                 ),
                 Gap(5),
                 Text(
                   " \$${product.price ?? ""}",
-                  style: TextStyles.getText18(color: AppColor.darkColor),
+                  style: TextStyles.getText16(color: AppColor.darkColor),
                 ),
                 Gap(20),
                 Row(

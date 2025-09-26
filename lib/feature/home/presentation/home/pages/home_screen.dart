@@ -1,5 +1,5 @@
-import 'package:bookia/constants/app_assets.dart';
-import 'package:bookia/extentions/dailogs.dart';
+import 'package:bookia/core/constants/app_assets.dart';
+import 'package:bookia/core/extentions/dailogs.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_states.dart';
 import 'package:bookia/feature/home/presentation/home/widgets/all_product_list.dart';
@@ -64,7 +64,10 @@ class HomeScreen extends StatelessWidget {
             } else if (state is HomeLoadedState) {
               // Dialogs.hideLoadingDialog(context);
             } else if (state is HomeErrorState) {
-              Dialogs.showErrorDialog(context, "حدث خطأ، حاول تاني");
+              Dialogs.showErrorDialog(
+                context,
+                state.message ?? "faild to load data",
+              );
             }
           },
         ),

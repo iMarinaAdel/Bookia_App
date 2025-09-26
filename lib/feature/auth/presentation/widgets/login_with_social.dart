@@ -1,4 +1,4 @@
-import 'package:bookia/constants/app_assets.dart';
+import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/feature/auth/presentation/widgets/app_social_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';

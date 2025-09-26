@@ -1,4 +1,4 @@
-import 'package:bookia/constants/app_assets.dart';
+import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

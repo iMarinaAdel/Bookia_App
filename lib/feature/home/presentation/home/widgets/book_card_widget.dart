@@ -1,4 +1,4 @@
-import 'package:bookia/components/bottoms/app_main_bottom.dart';
+import 'package:bookia/core/components/bottoms/app_main_bottom.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';

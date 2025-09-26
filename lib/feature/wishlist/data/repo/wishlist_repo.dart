@@ -10,14 +10,16 @@ class WishlistRepo {
     required int productId,
   }) async {
     try {
-      var res = await DioProvider.get(
+      var res = await DioProvider.post(
         endPoint: ApiEndpoints.addToWishlist,
         data: {"product_id": productId},
         header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
       );
 
       if (res.statusCode == 200) {
-        return WishlistResponse.fromJson(res.data);
+        var data = WishlistResponse.fromJson(res.data);
+        LocalHelper.setWishlist(data.data?.data);
+        return data;
       } else {
         return null;
       }
@@ -31,14 +33,16 @@ class WishlistRepo {
     required int productId,
   }) async {
     try {
-      var res = await DioProvider.get(
+      var res = await DioProvider.post(
         endPoint: ApiEndpoints.removeFromWishlist,
         data: {"product_id": productId},
         header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
       );
 
       if (res.statusCode == 200) {
-        return WishlistResponse.fromJson(res.data);
+        var data = WishlistResponse.fromJson(res.data);
+        LocalHelper.setWishlist(data.data?.data);
+        return data;
       } else {
         return null;
       }
@@ -56,7 +60,9 @@ class WishlistRepo {
       );
 
       if (res.statusCode == 200) {
-        return WishlistResponse.fromJson(res.data);
+        var data = WishlistResponse.fromJson(res.data);
+        LocalHelper.setWishlist(data.data?.data);
+        return data;
       } else {
         return null;
       }

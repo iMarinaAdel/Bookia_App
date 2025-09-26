@@ -1,5 +1,5 @@
-import 'package:bookia/components/inputs/search._field.dart';
-import 'package:bookia/extentions/dailogs.dart';
+import 'package:bookia/core/components/inputs/search._field.dart';
+import 'package:bookia/core/extentions/dailogs.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:bookia/feature/home/presentation/home/widgets/book_card_widget.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';

@@ -1,4 +1,4 @@
-import 'package:bookia/constants/app_assets.dart';
+import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/services/local/local_helper.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';

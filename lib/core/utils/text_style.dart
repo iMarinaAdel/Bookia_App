@@ -1,4 +1,4 @@
-import 'package:bookia/constants/app_fonts.dart';
+import 'package:bookia/core/constants/app_fonts.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 

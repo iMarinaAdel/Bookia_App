@@ -1,11 +1,14 @@
 import 'dart:convert';
 
 import 'package:bookia/feature/auth/data/models/response/auth_response/data.dart';
+import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalHelper {
   static late SharedPreferences prefs;
   static final kuserData = "user_data";
+  static final kwishlist = "wishlist";
+
   static init() async {
     prefs = await SharedPreferences.getInstance();
   }
@@ -30,6 +33,24 @@ class LocalHelper {
     var userDataJson = jsonDecode(source);
     // 3) parse Json to object
     return UserData.fromJson(userDataJson);
+  }
+
+  static setWishlist(List<Product>? product) async {
+    //1) parse object to Json (Map)
+    if (product == null) {
+      return;
+    }
+    var productList = product.map((e) => jsonEncode(e.toJson())).toList();
+
+    await prefs.setStringList(kwishlist, productList);
+    return null;
+  }
+
+  static List<Product>? getWishlist() {
+    var source = prefs.getStringList(kwishlist);
+    if (source == null) return null;
+    var listOfObj = source.map((e) => Product.fromJson(jsonDecode(e))).toList();
+    return listOfObj;
   }
 
   static Future<bool> setString(String key, String value) {
