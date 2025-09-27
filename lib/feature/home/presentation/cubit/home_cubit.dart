@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bookia/core/services/local/local_helper.dart';
+import 'package:bookia/feature/cart/data/repo/cart_repo.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/book_list_respose.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:bookia/feature/home/data/models/response/slider_response/slider.dart';
@@ -46,17 +47,26 @@ class HomeCubit extends Cubit<HomeState> {
     if (isWishlist(productId)) {
       var data = await WishlistRepo.removeFromWishlist(productId: productId);
       if (data != null) {
-        emit(AddRemoveToWishListSuccess(message: 'Removed from wishlist'));
+        emit(CartWishListSuccess(message: 'Removed from wishlist'));
       } else {
         emit(HomeErrorState("Something went wrong"));
       }
     } else {
       var data = await WishlistRepo.addToWishList(productId: productId);
       if (data != null) {
-        emit(AddRemoveToWishListSuccess(message: 'Added to wishlist'));
+        emit(CartWishListSuccess(message: 'Added to wishlist'));
       } else {
         emit(HomeErrorState("Something went wrong"));
       }
+    }
+  }
+
+  addToCart(int productId) async {
+    var data = await CartRepo.addToCart(productId: productId);
+    if (data != null) {
+      emit(CartWishListSuccess(message: "Added to cart successfully"));
+    } else {
+      emit(HomeErrorState('Something went wrong'));
     }
   }
 

@@ -16,7 +16,7 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (BuildContext context, state) {
-        if (state is AddRemoveToWishListSuccess) {
+        if (state is CartWishListSuccess) {
           Dialogs.hideLoadingDialog(context);
           Dialogs.showSnackBar(context, state.message ?? "Success");
         } else if (state is HomeErrorState) {

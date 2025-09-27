@@ -16,7 +16,7 @@ class WishlistBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<WishlistCubit, WishlistStates>(
       builder: (BuildContext context, state) {
-        var cubit = context.read<WishlistCubit>();
+        var cubit = context.watch<WishlistCubit>();
         if (cubit.products.isEmpty) {
           return Center(
             child: Column(
@@ -46,6 +46,9 @@ class WishlistBuilder extends StatelessWidget {
               product: cubit.products[index],
               onRemove: () {
                 cubit.removeWishList(cubit.products[index].id ?? 0);
+              },
+              onAddToCart: () {
+                cubit.addToCart(cubit.products[index].id ?? 0);
               },
             );
           },

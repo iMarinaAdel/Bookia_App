@@ -2,7 +2,10 @@ import 'package:bookia/core/components/bottoms/app_main_bottom.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
+import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
+import 'package:bookia/feature/home/presentation/cubit/home_states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 
 class DetailsBottomBar extends StatelessWidget {
@@ -12,28 +15,34 @@ class DetailsBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              products.price ?? "",
-              style: TextStyles.getText18(color: AppColor.darkColor),
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  products.price ?? "",
+                  style: TextStyles.getText18(color: AppColor.darkColor),
+                ),
+                Gap(60),
+                AppMainBottom(
+                  bottomColor: AppColor.darkColor,
+                  radias: 8,
+                  onPressed: () {
+                    context.read<HomeCubit>().addToCart(products.id ?? 0);
+                  },
+                  bottomHight: 56,
+                  text: "Add To Cart",
+                  bottomWidth: 190,
+                ),
+              ],
             ),
-            Gap(60),
-            AppMainBottom(
-              bottomColor: AppColor.darkColor,
-              radias: 8,
-              onPressed: () {},
-              bottomHight: 56,
-              text: "Add To Cart",
-              bottomWidth: 190,
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

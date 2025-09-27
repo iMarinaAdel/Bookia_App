@@ -6,9 +6,9 @@ class HomeLoadingState extends HomeState {}
 
 class HomeLoadedState extends HomeState {}
 
-class AddRemoveToWishListSuccess extends HomeState {
+class CartWishListSuccess extends HomeState {
   String? message;
-  AddRemoveToWishListSuccess({this.message});
+  CartWishListSuccess({this.message});
 }
 
 class HomeErrorState extends HomeState {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bookia/feature/auth/data/models/response/auth_response/data.dart';
+import 'package:bookia/feature/cart/data/models/response/cart_response/cart_item.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,10 +47,30 @@ class LocalHelper {
     return null;
   }
 
+  static setCart(List<CartItem>? product) async {
+    //1) parse object to Json (Map)
+    if (product == null) {
+      return;
+    }
+    var productList = product.map((e) => jsonEncode(e.toJson())).toList();
+
+    await prefs.setStringList(kwishlist, productList);
+    return null;
+  }
+
   static List<Product>? getWishlist() {
     var source = prefs.getStringList(kwishlist);
     if (source == null) return null;
     var listOfObj = source.map((e) => Product.fromJson(jsonDecode(e))).toList();
+    return listOfObj;
+  }
+
+  static List<CartItem>? getCart() {
+    var source = prefs.getStringList(kwishlist);
+    if (source == null) return null;
+    var listOfObj = source
+        .map((e) => CartItem.fromJson(jsonDecode(e)))
+        .toList();
     return listOfObj;
   }
 

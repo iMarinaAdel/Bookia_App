@@ -1,4 +1,3 @@
-
 import 'package:bookia/core/components/bottoms/app_main_bottom.dart';
 import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/routes/app_navigation.dart';
