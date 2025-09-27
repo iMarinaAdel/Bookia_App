@@ -86,7 +86,7 @@ class CartCardWidget extends StatelessWidget {
                           ),
                           onPressed: () {
                             cubit.updateCart(
-                              cartItem.itemProductId ?? 0,
+                              cartItem.itemId ?? 0,
                               quantity + 1,
                             );
                           },
@@ -112,7 +112,7 @@ class CartCardWidget extends StatelessWidget {
                           onPressed: () {
                             if (quantity > 1) {
                               cubit.updateCart(
-                                cartItem.itemProductId ?? 0,
+                                cartItem.itemId ?? 0,
                                 quantity - 1,
                               );
                             }

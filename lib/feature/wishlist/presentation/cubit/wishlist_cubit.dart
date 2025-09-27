@@ -7,10 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class WishlistCubit extends Cubit<WishlistStates> {
   WishlistCubit() : super(WishlistInitail());
   List<Product> products = [];
-  getWishList() {
-    emit(WishlistLoading());
 
-    WishlistRepo.getWishlist().then((value) {
+  getWishList() async {
+    emit(WishlistLoadingState());
+    await WishlistRepo.getWishlist().then((value) {
       if (value != null) {
         products = value.data?.data ?? [];
         emit(WishlistSuccess());
@@ -21,7 +21,7 @@ class WishlistCubit extends Cubit<WishlistStates> {
   }
 
   removeWishList(int productId) {
-    emit(WishlistLoading());
+    emit(WishlistLoadingState());
 
     WishlistRepo.removeFromWishlist(productId: productId).then((value) {
       if (value != null) {

@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:bookia/core/extentions/dailogs.dart';
-import 'package:bookia/core/services/local/local_helper.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/wishlist/presentation/cubit/wishlist_cubit.dart';
@@ -15,11 +12,8 @@ class WishlistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(LocalHelper.getUserData()?.token ?? "");
     return BlocProvider(
-      create: (BuildContext context) {
-        return WishlistCubit()..getWishList();
-      },
+      create: (BuildContext context) => WishlistCubit()..getWishList(),
       child: BlocConsumer<WishlistCubit, WishlistStates>(
         builder: (context, state) {
           return Scaffold(
@@ -40,7 +34,7 @@ class WishlistScreen extends StatelessWidget {
               context,
               state.message ?? "Added to cart successfully",
             );
-          } else if (state is WishlistLoading) {
+          } else if (state is WishlistLoadingState) {
             Dialogs.showLoadingDialog(context);
           } else if (state is WishlistSuccess) {
             Dialogs.hideLoadingDialog(context);

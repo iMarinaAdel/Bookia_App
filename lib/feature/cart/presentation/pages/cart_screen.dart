@@ -17,6 +17,7 @@ class CartScreen extends StatelessWidget {
       },
       child: BlocConsumer<CartCubit, CarStates>(
         builder: (BuildContext context, state) {
+          var cubit = context.read<CartCubit>();
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
@@ -25,12 +26,10 @@ class CartScreen extends StatelessWidget {
                 style: TextStyles.getText26(color: AppColor.darkColor),
               ),
             ),
-            body: CartBuilderWidget(),
+            body: CartBuilderWidget(cubit: cubit),
           );
         },
-        listener: (BuildContext context, state) {
-        
-        },
+        listener: (BuildContext context, state) {},
       ),
     );
   }

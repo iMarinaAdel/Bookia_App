@@ -8,6 +8,7 @@ import 'package:bookia/feature/cart/data/models/response/cart_response/cart_resp
 class CartRepo {
   static Future<CartResponse?> addToCart({required int productId}) async {
     try {
+      log("token ${LocalHelper.getUserData()?.token}");
       var res = await DioProvider.post(
         endPoint: ApiEndpoints.addToCart,
         data: {"product_id": productId},
@@ -29,6 +30,7 @@ class CartRepo {
 
   static Future<CartResponse?> removeFromCart({required int cartItemId}) async {
     try {
+      log("$cartItemId -token ${LocalHelper.getUserData()?.token}");
       var res = await DioProvider.post(
         endPoint: ApiEndpoints.removeFromCart,
         data: {"cart_item_id": cartItemId},
@@ -36,6 +38,7 @@ class CartRepo {
       );
 
       if (res.statusCode == 200) {
+        log(res.data.toString());
         var data = CartResponse.fromJson(res.data);
         // LocalHelper.setCart(data.data?.cartItems);
         return data;
@@ -58,6 +61,7 @@ class CartRepo {
       if (res.statusCode == 200) {
         var data = CartResponse.fromJson(res.data);
         LocalHelper.setCart(data.data?.cartItems);
+        log(res.data.toString());
         return data;
       } else {
         return null;
@@ -73,6 +77,8 @@ class CartRepo {
     required int quantity,
   }) async {
     try {
+      log("$cartItemId -token ${LocalHelper.getUserData()?.token}");
+
       var res = await DioProvider.post(
         endPoint: ApiEndpoints.updateCart,
         data: {"cart_item_id": cartItemId, "quantity": quantity},
@@ -80,10 +86,12 @@ class CartRepo {
       );
 
       if (res.statusCode == 200) {
+        log(res.data.toString());
         var data = CartResponse.fromJson(res.data);
         LocalHelper.setCart(data.data?.cartItems);
         return data;
       } else {
+        log(res.data.toString());
         return null;
       }
     } catch (e) {

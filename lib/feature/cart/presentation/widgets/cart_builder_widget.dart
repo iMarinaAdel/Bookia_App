@@ -6,20 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartBuilderWidget extends StatelessWidget {
-  const CartBuilderWidget({super.key});
+  const CartBuilderWidget({super.key, required this.cubit});
+  final CartCubit cubit;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CarStates>(
       builder: (context, state) {
-        var cubit = context.watch<CartCubit>();
+        var cubit = context.read<CartCubit>();
         return ListView.separated(
           padding: const EdgeInsets.all(20),
           itemBuilder: (context, index) {
             return CartCardWidget(
               cartItem: cubit.cartItems[index],
               onRemove: () {
-                cubit.removeFromCart(cubit.cartItems[index].itemProductId ?? 0);
+                cubit.removeFromCart(cubit.cartItems[index].itemId ?? 0);
               },
             );
           },

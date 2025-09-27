@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bookia/feature/cart/data/models/response/cart_response/cart_item.dart';
 import 'package:bookia/feature/cart/data/repo/cart_repo.dart';
 import 'package:bookia/feature/cart/presentation/cubit/cart_states.dart';
@@ -21,6 +23,7 @@ class CartCubit extends Cubit<CarStates> {
   }
 
   removeFromCart(int cartItemId) {
+    log(cartItemId.toString());
     emit(CartLoading());
 
     CartRepo.removeFromCart(cartItemId: cartItemId).then((value) {

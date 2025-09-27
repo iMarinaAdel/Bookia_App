@@ -2,7 +2,7 @@ class WishlistStates {}
 
 class WishlistInitail extends WishlistStates {}
 
-class WishlistLoading extends WishlistStates {}
+class WishlistLoadingState extends WishlistStates {}
 
 class WishlistSuccess extends WishlistStates {}
 
