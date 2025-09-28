@@ -26,7 +26,9 @@ class CartScreen extends StatelessWidget {
                 style: TextStyles.getText26(color: AppColor.darkColor),
               ),
             ),
-            body: CartBuilderWidget(cubit: cubit),
+            body: 
+            
+            CartBuilderWidget(cubit: cubit),
           );
         },
         listener: (BuildContext context, state) {},
