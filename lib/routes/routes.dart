@@ -9,6 +9,8 @@ import 'package:bookia/feature/home/data/models/response/book_list_respose/produ
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/details/pages/details_screen.dart';
 import 'package:bookia/feature/main/presentation/pages/main_screen.dart';
+import 'package:bookia/feature/profile/presentation/pages/edit_profile_screen.dart';
+import 'package:bookia/feature/profile/presentation/pages/update_password_screen.dart';
 import 'package:bookia/feature/search/presentation/pages/search_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
@@ -28,6 +30,8 @@ class Routes {
   static final String main = '/main';
   static final String search = '/search';
   static final String details = '/details';
+  static final String editProfile = '/editProfile';
+  static final String resetPassword = '/resetPassword';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -102,6 +106,16 @@ class Routes {
             child: DetailsScreen(products: data),
           );
         },
+      ),
+      GoRoute(
+        path: editProfile,
+        builder: (BuildContext context, GoRouterState state) =>
+            const EditProfileScreen(),
+      ),
+      GoRoute(
+        path: resetPassword,
+        builder: (BuildContext context, GoRouterState state) =>
+            const UpdatePasswordScreen(),
       ),
     ],
   );

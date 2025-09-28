@@ -15,4 +15,5 @@ class AppAssets {
   static const String closeSvg = "assets/icons/Shape.svg";
 
   static const String donej = "assets/image/done.json";
+  static const String logOut = "assets/icons/logOut.svg";
 }
