@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 
 class UserInfo extends StatelessWidget {
-  const UserInfo({
-    super.key,
-  });
+  const UserInfo({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -8,14 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchCubit extends Cubit<SearchStates> {
   SearchCubit() : super(SearchInitial());
-  var searchNameControllar = TextEditingController();
 
   List<Product> products = [];
 
-  Future<void> getSearch() async {
-    var params = SearchRequest(name: searchNameControllar.text);
+  Future<void> getSearch(TextEditingController searchController) async {
     emit(SearchLoading());
-    var response = await SearchRepo.getSearch(params);
+    var request = SearchRequest(name: searchController.text);
+    var response = await SearchRepo.getSearch(request);
 
     if (response != null) {
       products = (response as BookListRespose).data?.products ?? [];

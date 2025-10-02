@@ -1,6 +1,7 @@
 import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppTextFormField extends StatefulWidget {
@@ -13,6 +14,9 @@ class AppTextFormField extends StatefulWidget {
     this.controller,
     this.validator,
     this.autofocus,
+    this.onTap,
+    this.readOnly,
+    this.inputFormatters,
   });
   final String? labelText;
   final Widget? suffixIcon;
@@ -21,6 +25,9 @@ class AppTextFormField extends StatefulWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool? autofocus;
+  final VoidCallback? onTap;
+  final bool? readOnly;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
@@ -32,6 +39,9 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: [],
+      readOnly: widget.readOnly ?? false,
+      onTap: widget.onTap,
       autofocus: widget.autofocus ?? false,
       validator: widget.validator,
       controller: widget.controller,
@@ -39,25 +49,27 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       cursorColor: AppColor.primaryColor,
       decoration: InputDecoration(
         labelText: widget.labelText,
-        suffixIcon: widget.isPassword
-            ? Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      obscureText = !obscureText;
-                    });
-                  },
-                  child: obscureText
-                      ? SvgPicture.asset(
-                          AppAssets.eyeSvg,
-                          width: 25,
-                          height: 25,
-                        )
-                      : Icon(Icons.visibility_off_outlined),
-                ),
-              )
-            : null,
+        suffixIcon:
+            widget.suffixIcon ??
+            (widget.isPassword
+                ? Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                      child: obscureText
+                          ? SvgPicture.asset(
+                              AppAssets.eyeSvg,
+                              width: 25,
+                              height: 25,
+                            )
+                          : Icon(Icons.visibility_off_outlined),
+                    ),
+                  )
+                : null),
         hintText: widget.hintText,
       ),
     );

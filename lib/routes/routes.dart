@@ -5,12 +5,15 @@ import 'package:bookia/feature/auth/presentation/pages/forget_password/oTP_verif
 import 'package:bookia/feature/auth/presentation/pages/forget_password/password_changed.dart';
 import 'package:bookia/feature/auth/presentation/pages/login/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/pages/register/register_screen.dart';
+import 'package:bookia/feature/cart/presentation/cubit/cart_cubit.dart';
+import 'package:bookia/feature/cart/presentation/pages/palce_order_screen.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/details/pages/details_screen.dart';
 import 'package:bookia/feature/main/presentation/pages/main_screen.dart';
 import 'package:bookia/feature/profile/presentation/pages/edit_profile_screen.dart';
 import 'package:bookia/feature/profile/presentation/pages/update_password_screen.dart';
+import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
 import 'package:bookia/feature/search/presentation/pages/search_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
@@ -32,6 +35,7 @@ class Routes {
   static final String details = '/details';
   static final String editProfile = '/editProfile';
   static final String resetPassword = '/resetPassword';
+  static final String placeOrder = '/placeOrder';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -88,12 +92,16 @@ class Routes {
       GoRoute(
         path: main,
         builder: (BuildContext context, GoRouterState state) =>
-            const MainScreen(),
+            MainScreen(initIndex: state.extra as int?),
       ),
       GoRoute(
         path: search,
-        builder: (BuildContext context, GoRouterState state) =>
-            const SearchScreen(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) {
+            return SearchCubit();
+          },
+          child: const SearchScreen(),
+        ),
       ),
       GoRoute(
         path: details,
@@ -116,6 +124,15 @@ class Routes {
         path: resetPassword,
         builder: (BuildContext context, GoRouterState state) =>
             const UpdatePasswordScreen(),
+      ),
+      GoRoute(
+        path: placeOrder,
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) {
+            return CartCubit()..initData();
+          },
+          child: PalceOrderScreen(totalAmount: state.extra as String),
+        ),
       ),
     ],
   );

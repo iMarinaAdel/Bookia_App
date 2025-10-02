@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
 
   await Future.value([DioProvider.init(), LocalHelper.init()]);
 
@@ -22,7 +21,7 @@ class BookiaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     LocalHelper.setUserData(null);
+    LocalHelper.setUserData(null);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: Routes.router,

@@ -1,5 +1,6 @@
 import 'package:bookia/core/components/inputs/search._field.dart';
 import 'package:bookia/core/extentions/dailogs.dart';
+import 'package:bookia/core/extentions/debouncer.dart';
 import 'package:bookia/feature/home/data/models/response/book_list_respose/product.dart';
 import 'package:bookia/feature/home/presentation/home/widgets/book_card_widget.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
@@ -7,8 +8,26 @@ import 'package:bookia/feature/search/presentation/cubit/search_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final TextEditingController searchController = TextEditingController();
+  final Debouncer debouncer = Debouncer(milliseconds: 700);
+  @override
+  void initState() {
+    super.initState();
+    searchController.addListener(() {
+      // Debounce the search query
+      debouncer.run(
+        () => context.read<SearchCubit>().getSearch(searchController),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +37,7 @@ class SearchScreen extends StatelessWidget {
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
-              title: SearchBarWidget(),
+              title: SearchBarWidget(searchController: searchController),
               automaticallyImplyLeading: false,
             ),
             body: BlocConsumer<SearchCubit, SearchStates>(

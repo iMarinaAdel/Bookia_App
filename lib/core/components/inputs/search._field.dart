@@ -6,8 +6,8 @@ import 'package:flutter_svg/svg.dart';
 
 class SearchBarWidget extends StatelessWidget {
   final ValueChanged<String>? onChanged;
-
-  const SearchBarWidget({super.key, this.onChanged});
+  final TextEditingController searchController;
+  const SearchBarWidget({super.key, this.onChanged, required this.searchController});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class SearchBarWidget extends StatelessWidget {
         width: double.infinity,
         child: TextFormField(
           onFieldSubmitted: (value) {
-            cubit.getSearch();
+            cubit.getSearch(searchController);
           },
           textInputAction: TextInputAction.search,
-          controller: cubit.searchNameControllar,
+          controller: searchController,
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: "Search",
