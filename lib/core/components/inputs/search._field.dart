@@ -7,7 +7,11 @@ import 'package:flutter_svg/svg.dart';
 class SearchBarWidget extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final TextEditingController searchController;
-  const SearchBarWidget({super.key, this.onChanged, required this.searchController});
+  const SearchBarWidget({
+    super.key,
+    this.onChanged,
+    required this.searchController,
+  });
 
   @override
   Widget build(BuildContext context) {
