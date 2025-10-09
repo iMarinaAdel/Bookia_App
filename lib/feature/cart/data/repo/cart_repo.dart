@@ -9,11 +9,9 @@ import 'package:bookia/feature/cart/data/models/response/cart_response/cart_resp
 class CartRepo {
   static Future<CartResponse?> addToCart({required int productId}) async {
     try {
-      log("token ${LocalHelper.getUserData()?.token}");
       var res = await DioProvider.post(
         endPoint: ApiEndpoints.addToCart,
         data: {"product_id": productId},
-        header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
       );
 
       if (res.statusCode == 201) {
@@ -31,11 +29,9 @@ class CartRepo {
 
   static Future<CartResponse?> removeFromCart({required int cartItemId}) async {
     try {
-      log("$cartItemId -token ${LocalHelper.getUserData()?.token}");
       var res = await DioProvider.post(
         endPoint: ApiEndpoints.removeFromCart,
         data: {"cart_item_id": cartItemId},
-        header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
       );
 
       if (res.statusCode == 200) {
@@ -54,10 +50,7 @@ class CartRepo {
 
   static Future<CartResponse?> getCart() async {
     try {
-      var res = await DioProvider.get(
-        endPoint: ApiEndpoints.showCart,
-        header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
-      );
+      var res = await DioProvider.get(endPoint: ApiEndpoints.showCart);
 
       if (res.statusCode == 200) {
         var data = CartResponse.fromJson(res.data);
@@ -78,12 +71,9 @@ class CartRepo {
     required int quantity,
   }) async {
     try {
-      log("$cartItemId -token ${LocalHelper.getUserData()?.token}");
-
       var res = await DioProvider.post(
         endPoint: ApiEndpoints.updateCart,
         data: {"cart_item_id": cartItemId, "quantity": quantity},
-        header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
       );
 
       if (res.statusCode == 200) {
@@ -103,10 +93,7 @@ class CartRepo {
 
   static Future<bool> checkOut() async {
     try {
-      var res = await DioProvider.get(
-        endPoint: ApiEndpoints.checkout,
-        header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
-      );
+      var res = await DioProvider.get(endPoint: ApiEndpoints.checkout);
 
       if (res.statusCode == 200) {
         return true;
@@ -126,7 +113,6 @@ class CartRepo {
       var res = await DioProvider.post(
         endPoint: ApiEndpoints.placeOrder,
         data: placeOrdeParams.toJson(),
-        header: {"Authorization": "Bearer ${LocalHelper.getUserData()?.token}"},
       );
 
       if (res.statusCode == 201) {

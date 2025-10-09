@@ -11,6 +11,7 @@ import 'package:bookia/feature/home/data/models/response/book_list_respose/produ
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/details/pages/details_screen.dart';
 import 'package:bookia/feature/main/presentation/pages/main_screen.dart';
+import 'package:bookia/feature/profile/presentation/cubit/profile_cubit.dart';
 import 'package:bookia/feature/profile/presentation/pages/edit_profile_screen.dart';
 import 'package:bookia/feature/profile/presentation/pages/update_password_screen.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
@@ -20,6 +21,8 @@ import 'package:bookia/feature/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 
 class Routes {
   static final String splash = '/';
@@ -38,6 +41,7 @@ class Routes {
   static final String placeOrder = '/placeOrder';
 
   static final GoRouter router = GoRouter(
+    navigatorKey: navKey,
     routes: <RouteBase>[
       GoRoute(
         path: splash,
@@ -117,13 +121,21 @@ class Routes {
       ),
       GoRoute(
         path: editProfile,
-        builder: (BuildContext context, GoRouterState state) =>
-            const EditProfileScreen(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) {
+            return ProfileCubit()..initData();
+          },
+          child: const EditProfileScreen(),
+        ),
       ),
       GoRoute(
         path: resetPassword,
-        builder: (BuildContext context, GoRouterState state) =>
-            const UpdatePasswordScreen(),
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (BuildContext context) {
+            return ProfileCubit();
+          },
+          child: const UpdatePasswordScreen(),
+        ),
       ),
       GoRoute(
         path: placeOrder,

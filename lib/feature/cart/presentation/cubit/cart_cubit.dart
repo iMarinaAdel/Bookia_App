@@ -22,7 +22,7 @@ class CartCubit extends Cubit<CarStates> {
   int selectedGovernorateId = -1;
 
   initData() {
-    var userData = LocalHelper.getUserData()?.user;
+    var userData = LocalHelper.getUserData();
     namecontroller.text = userData?.name ?? "";
     emailcontroller.text = userData?.email ?? "";
     phonecontroller.text = userData?.phone ?? "";
@@ -58,7 +58,11 @@ class CartCubit extends Cubit<CarStates> {
   }
 
   updateCart(int cartItemId, int quantity) {
-    emit(CartLoading());
+    final index = cartItems.indexWhere((item) => item.itemId == cartItemId);
+    if (index != -1) {
+      cartItems[index].itemQuantity = quantity;
+      emit(CartSuccess());
+    }
 
     CartRepo.updateCart(cartItemId: cartItemId, quantity: quantity).then((
       value,

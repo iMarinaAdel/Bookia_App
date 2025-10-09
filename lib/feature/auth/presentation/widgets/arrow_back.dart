@@ -1,4 +1,4 @@
-import 'package:bookia/routes/app_navigation.dart';
+import 'package:bookia/core/routes/app_navigation.dart';
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 

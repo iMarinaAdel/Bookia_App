@@ -14,7 +14,7 @@ pushReplacementTo(BuildContext context, String route, {Object? extra}) {
   return context.replace(route, extra: extra);
 }
 
-pushAndRemoveUntilTo(BuildContext context, String route, {Object? extra}) {
+pushToBase(BuildContext context, String route, {Object? extra}) {
   // Navigator.pushAndRemoveUntil(
   //   context,
   //   MaterialPageRoute(builder: (context) => newPage),

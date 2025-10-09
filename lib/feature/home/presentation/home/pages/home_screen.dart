@@ -6,8 +6,8 @@ import 'package:bookia/feature/home/presentation/home/widgets/all_product_list.d
 import 'package:bookia/feature/home/presentation/home/widgets/best_sellers_list.dart';
 import 'package:bookia/feature/home/presentation/home/widgets/home_slider.dart';
 import 'package:bookia/feature/home/presentation/home/widgets/new_arrivals_list.dart';
-import 'package:bookia/routes/app_navigation.dart';
-import 'package:bookia/routes/routes.dart';
+import 'package:bookia/core/routes/app_navigation.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';

@@ -1,7 +1,7 @@
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/cart/data/source/governorate_list.dart';
 import 'package:bookia/feature/cart/presentation/cubit/cart_cubit.dart';
-import 'package:bookia/routes/app_navigation.dart';
+import 'package:bookia/core/routes/app_navigation.dart';
 import 'package:flutter/material.dart';
 
 Future<dynamic> showGovList(BuildContext context, CartCubit cubit) {

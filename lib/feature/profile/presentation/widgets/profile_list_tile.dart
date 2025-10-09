@@ -1,6 +1,6 @@
 import 'package:bookia/core/utils/app_color.dart';
 import 'package:bookia/core/utils/text_style.dart';
-import 'package:bookia/feature/profile/presentation/models/profile_item_model.dart';
+import 'package:bookia/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileListTile extends StatelessWidget {

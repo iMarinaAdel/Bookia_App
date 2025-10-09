@@ -16,9 +16,9 @@ class AuthRepo {
       if (res.statusCode == 201) {
         // success
         // data as json
-
         var data = AuthResponse.fromJson(res.data);
-        await LocalHelper.setUserData(data.data);
+        await LocalHelper.setUserData(data.data?.user);
+        await LocalHelper.setToken(data.data?.token);
         return data;
       } else {
         return null;
@@ -38,7 +38,8 @@ class AuthRepo {
       if (res.statusCode == 200) {
         // success
         var data = AuthResponse.fromJson(res.data);
-        await LocalHelper.setUserData(data.data);
+        await LocalHelper.setUserData(data.data?.user);
+        await LocalHelper.setToken(data.data?.token);
         return data;
       } else {
         return null;

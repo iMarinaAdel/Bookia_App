@@ -4,8 +4,8 @@ import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/feature/cart/presentation/cubit/cart_states.dart';
 import 'package:bookia/feature/cart/presentation/widgets/cart_card_widget.dart';
-import 'package:bookia/routes/app_navigation.dart';
-import 'package:bookia/routes/routes.dart';
+import 'package:bookia/core/routes/app_navigation.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
@@ -22,6 +22,16 @@ class CartScreen extends StatelessWidget {
       child: BlocConsumer<CartCubit, CarStates>(
         builder: (BuildContext context, state) {
           var cubit = context.read<CartCubit>();
+          double total = 0;
+          for (var item in cubit.cartItems) {
+            double price =
+                double.tryParse(
+                  item.itemProductPriceAfterDiscount.toString(),
+                ) ??
+                0.0;
+            int quantity = item.itemQuantity ?? 1;
+            total += price * quantity;
+          }
 
           return Scaffold(
             appBar: AppBar(
@@ -64,6 +74,22 @@ class CartScreen extends StatelessWidget {
                                   cubit.cartItems[index].itemId ?? 0,
                                 );
                               },
+                              onIncrease: () {
+                                final item = cubit.cartItems[index];
+                                cubit.updateCart(
+                                  item.itemId ?? 0,
+                                  (item.itemQuantity ?? 1) + 1,
+                                );
+                              },
+                              onDecrease: () {
+                                final item = cubit.cartItems[index];
+                                if ((item.itemQuantity ?? 1) > 1) {
+                                  cubit.updateCart(
+                                    item.itemId ?? 0,
+                                    (item.itemQuantity ?? 1) - 1,
+                                  );
+                                }
+                              },
                             );
                           },
                           separatorBuilder: (context, index) {
@@ -91,7 +117,7 @@ class CartScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "\$${cubit.cartResponse?.data?.total.toString() ?? '0'}",
+                              "\$${total.toStringAsFixed(2)}",
                               style: TextStyles.getText20(
                                 color: AppColor.primaryColor,
                                 fontWeight: FontWeight.bold,
@@ -105,9 +131,7 @@ class CartScreen extends StatelessWidget {
                           pushTo(
                             context,
                             Routes.placeOrder,
-                            extra:
-                                cubit.cartResponse?.data?.total.toString() ??
-                                '0',
+                            extra: total.toStringAsFixed(2),
                           );
                         },
                         text: "Checkout",

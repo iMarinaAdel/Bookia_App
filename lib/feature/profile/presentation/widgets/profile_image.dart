@@ -1,5 +1,7 @@
 import 'package:bookia/core/constants/app_assets.dart';
+import 'package:bookia/core/services/local/local_helper.dart';
 import 'package:bookia/core/utils/app_color.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,16 +17,16 @@ class ProfileImage extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(60),
-              child: Image.asset(
-                AppAssets.welcome,
+              child: CachedNetworkImage(
                 width: 121,
                 height: 121,
                 fit: BoxFit.cover,
+                imageUrl: LocalHelper.getUserData()?.image ?? "",
               ),
             ),
             Positioned(
               bottom: -5,
-              right: 0,
+              right: -5,
               child: IconButton(
                 onPressed: () {},
                 icon: Container(

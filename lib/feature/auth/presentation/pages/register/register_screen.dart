@@ -6,8 +6,8 @@ import 'package:bookia/feature/auth/presentation/cubit/auth_states.dart';
 import 'package:bookia/feature/auth/presentation/widgets/arrow_back.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_form.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_switcher.dart';
-import 'package:bookia/routes/app_navigation.dart';
-import 'package:bookia/routes/routes.dart';
+import 'package:bookia/core/routes/app_navigation.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
             Dialogs.hideLoadingDialog(context);
             Dialogs.showSuccessDialog(context, "Register Successfully!");
             Future.delayed(const Duration(seconds: 2), () {
-              pushAndRemoveUntilTo(context, Routes.main);
+              pushToBase(context, Routes.main);
             });
           } else if (state is AuthError) {
             Dialogs.hideLoadingDialog(context);

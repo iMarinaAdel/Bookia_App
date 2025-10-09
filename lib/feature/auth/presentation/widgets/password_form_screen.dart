@@ -8,8 +8,8 @@ import 'package:bookia/feature/auth/presentation/auth_types/password_screen_type
 import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_states.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_switcher.dart';
-import 'package:bookia/routes/app_navigation.dart';
-import 'package:bookia/routes/routes.dart';
+import 'package:bookia/core/routes/app_navigation.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';

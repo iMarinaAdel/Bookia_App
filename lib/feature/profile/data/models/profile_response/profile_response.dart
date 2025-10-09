@@ -1,7 +1,7 @@
-import 'data.dart';
+import 'package:bookia/feature/auth/data/models/response/auth_response/user.dart';
 
 class ProfileResponse {
-  Data? data;
+  User? data;
   String? message;
   List<dynamic>? error;
   int? status;
@@ -12,7 +12,7 @@ class ProfileResponse {
     return ProfileResponse(
       data: json['data'] == null
           ? null
-          : Data.fromJson(json['data'] as Map<String, dynamic>),
+          : User.fromJson(json['data'] as Map<String, dynamic>),
       message: json['message'] as String?,
       error: json['error'] as List<dynamic>?,
       status: json['status'] as int?,
